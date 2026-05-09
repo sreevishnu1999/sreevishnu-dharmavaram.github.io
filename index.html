@@ -1,362 +1,944 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sree Vishnu Vardhan — AI Engineer</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Sree Vishnu Vardhan | AI Engineer</title>
+
+<meta name="description"
+content="Sree Vishnu Vardhan — AI Engineer specializing in GenAI, Agentic AI, Knowledge Graphs, GraphRAG, and Enterprise AI Systems." />
+
+<meta property="og:title" content="Sree Vishnu Vardhan | AI Engineer" />
+<meta property="og:description"
+content="AI Engineer specializing in Agentic AI, Knowledge Graphs, Enterprise GenAI Systems, and Life Sciences AI." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
 <style>
-:root {
-  --bg:      #050d09;
-  --bg2:     #0b1c14;
-  --bg3:     #112b1d;
-  --teal:    #0f6e56;
-  --teall:   #1D9E75;
-  --tealp:   #4ecb99;
-  --pale:    #a8e6ce;
-  --white:   #f0faf5;
-  --text:    #c8e8d8;
-  --muted:   #7aaa90;
-  --dim:     #4a7560;
-  --border:  rgba(29,158,117,0.2);
-  --glow:    rgba(29,158,117,0.07);
+
+:root{
+  --bg:#050816;
+  --bg2:#0d1325;
+  --card:#121a31;
+  --line:rgba(255,255,255,0.08);
+  --text:#edf3ff;
+  --muted:#9ba8c7;
+  --accent:#4ade80;
+  --accent2:#22c55e;
+  --glow:rgba(74,222,128,0.25);
 }
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.75;overflow-x:hidden;}
-#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;opacity:0.25;pointer-events:none;}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;
+  line-height:1.7;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+canvas{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  opacity:.4;
+}
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+section{
+  position:relative;
+  z-index:2;
+  padding:120px 0;
+}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 5%;background:rgba(5,13,9,0.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
-.nav-logo{font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.12em;color:var(--tealp);}
-.nav-links{display:flex;gap:2.5rem;list-style:none;}
-.nav-links a{font-size:0.82rem;letter-spacing:0.06em;color:var(--muted);text-decoration:none;transition:color 0.2s;}
-.nav-links a:hover{color:var(--tealp);}
+
+nav{
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:999;
+  backdrop-filter:blur(20px);
+  background:rgba(5,8,22,.7);
+  border-bottom:1px solid var(--line);
+}
+
+.nav-inner{
+  width:min(1180px,92%);
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 0;
+}
+
+.logo{
+  font-weight:700;
+  font-size:1rem;
+  letter-spacing:.12em;
+  color:var(--accent);
+}
+
+.nav-links{
+  display:flex;
+  gap:32px;
+}
+
+.nav-links a{
+  color:var(--muted);
+  font-size:.95rem;
+  transition:.3s;
+}
+
+.nav-links a:hover{
+  color:var(--text);
+}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 5% 5rem;position:relative;z-index:1;}
-.hero-inner{max-width:720px;}
-.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.14em;color:var(--tealp);border:1px solid var(--border);padding:0.35rem 1rem;border-radius:2px;background:var(--glow);margin-bottom:2rem;opacity:0;animation:fadeUp 0.5s ease 0.15s forwards;}
-.hero-badge::before{content:'';width:6px;height:6px;background:var(--tealp);border-radius:50%;animation:pulse 2s ease infinite;}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(1.5);}}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(3.2rem,7vw,6rem);font-weight:900;line-height:1.0;color:var(--white);margin-bottom:0.2rem;opacity:0;animation:fadeUp 0.6s ease 0.3s forwards;}
-.hero h1 em{font-style:normal;color:var(--tealp);display:block;}
-.hero-role{font-family:'DM Mono',monospace;font-size:0.85rem;letter-spacing:0.1em;color:var(--teal);text-transform:uppercase;margin:1.2rem 0 1rem;opacity:0;animation:fadeUp 0.6s ease 0.45s forwards;}
-.hero-sub{font-size:1.08rem;font-weight:300;color:var(--muted);max-width:540px;line-height:1.8;margin-bottom:2.8rem;opacity:0;animation:fadeUp 0.6s ease 0.6s forwards;}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp 0.6s ease 0.75s forwards;}
-.btn-solid{background:var(--teall);color:#fff;padding:0.8rem 2.2rem;border-radius:3px;text-decoration:none;font-size:0.88rem;font-weight:500;letter-spacing:0.04em;transition:background 0.2s,transform 0.15s;}
-.btn-solid:hover{background:var(--tealp);transform:translateY(-2px);}
-.btn-outline{border:1px solid var(--border);color:var(--pale);padding:0.8rem 2.2rem;border-radius:3px;text-decoration:none;font-size:0.88rem;font-weight:400;transition:border-color 0.2s,color 0.2s;}
-.btn-outline:hover{border-color:var(--tealp);color:var(--tealp);}
 
-/* LAYOUT */
-section{position:relative;z-index:1;}
-.wrap{max-width:1080px;margin:0 auto;padding:0 5%;}
-.sec-eyebrow{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.18em;color:var(--tealp);text-transform:uppercase;margin-bottom:0.7rem;}
-.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,2.6rem);font-weight:700;color:var(--white);line-height:1.15;margin-bottom:2.8rem;}
-hr.divider{border:none;border-top:1px solid var(--border);position:relative;z-index:1;}
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  position:relative;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:70px;
+  align-items:center;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  padding:10px 18px;
+  border-radius:999px;
+  margin-bottom:30px;
+  color:var(--accent);
+  font-size:.82rem;
+}
+
+.badge::before{
+  content:'';
+  width:8px;
+  height:8px;
+  background:var(--accent);
+  border-radius:50%;
+  box-shadow:0 0 15px var(--accent);
+}
+
+.hero h1{
+  font-size:clamp(3rem,8vw,6rem);
+  line-height:.95;
+  margin-bottom:25px;
+  font-family:'Space Grotesk',sans-serif;
+}
+
+.hero h1 span{
+  color:var(--accent);
+}
+
+.hero p{
+  max-width:720px;
+  color:var(--muted);
+  font-size:1.1rem;
+  margin-bottom:40px;
+}
+
+.hero-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px;
+}
+
+.btn{
+  padding:15px 28px;
+  border-radius:12px;
+  font-weight:600;
+  transition:.3s;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+
+.btn-primary{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#04110a;
+  box-shadow:0 10px 40px var(--glow);
+}
+
+.btn-primary:hover{
+  transform:translateY(-4px);
+}
+
+.btn-outline{
+  border:1px solid var(--line);
+  color:var(--text);
+}
+
+.btn-outline:hover{
+  border-color:var(--accent);
+  background:rgba(74,222,128,.08);
+}
+
+.hero-card{
+  background:linear-gradient(180deg,var(--card),rgba(255,255,255,.02));
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:40px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-card::before{
+  content:'';
+  position:absolute;
+  width:300px;
+  height:300px;
+  background:radial-gradient(circle,var(--glow),transparent 70%);
+  top:-120px;
+  right:-120px;
+}
+
+.profile{
+  width:170px;
+  height:170px;
+  border-radius:50%;
+  margin:auto;
+  background:linear-gradient(135deg,var(--accent),#1e293b);
+  padding:5px;
+}
+
+.profile img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+  background:#111;
+}
+
+.quick-stats{
+  margin-top:35px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.q-card{
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:20px;
+}
+
+.q-card h3{
+  font-size:1.8rem;
+  color:var(--accent);
+}
+
+.q-card p{
+  margin:0;
+  font-size:.9rem;
+}
+
+/* TITLES */
+
+.section-top{
+  margin-bottom:60px;
+}
+
+.eyebrow{
+  color:var(--accent);
+  font-size:.85rem;
+  letter-spacing:.2em;
+  margin-bottom:12px;
+  text-transform:uppercase;
+}
+
+.title{
+  font-size:clamp(2rem,5vw,3.4rem);
+  line-height:1.1;
+  font-family:'Space Grotesk',sans-serif;
+}
 
 /* ABOUT */
-.about{padding:6rem 0;}
-.about-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:5rem;align-items:start;}
-.about-text p{color:var(--muted);font-weight:300;font-size:0.97rem;margin-bottom:1rem;}
-.about-text p strong{color:var(--pale);font-weight:500;}
-.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-.stat{background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:1.4rem 1.2rem;transition:border-color 0.2s,transform 0.2s;}
-.stat:hover{border-color:var(--tealp);transform:translateY(-3px);}
-.stat-n{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:var(--tealp);line-height:1;margin-bottom:0.3rem;}
-.stat-l{font-size:0.78rem;color:var(--muted);line-height:1.4;}
 
-/* EXPERTISE */
-.expertise{padding:6rem 0;}
-.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
-.exp-card{background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:1.8rem 1.5rem;transition:border-color 0.25s,transform 0.2s,background 0.2s;}
-.exp-card:hover{border-color:var(--tealp);background:var(--bg3);transform:translateY(-4px);}
-.exp-icon{font-size:1.6rem;margin-bottom:1rem;}
-.exp-card h3{font-size:0.97rem;font-weight:500;color:var(--white);margin-bottom:0.6rem;}
-.exp-card p{font-size:0.84rem;color:var(--muted);line-height:1.7;font-weight:300;}
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+}
 
-/* TIMELINE */
-.work{padding:6rem 0;}
-.timeline{display:flex;flex-direction:column;gap:2rem;}
-.tl-item{display:grid;grid-template-columns:180px 28px 1fr;gap:0 1.5rem;align-items:start;}
-.tl-date{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;color:var(--dim);text-align:right;padding-top:0.3rem;line-height:1.6;}
-.tl-spine{display:flex;flex-direction:column;align-items:center;padding-top:0.35rem;}
-.tl-dot{width:10px;height:10px;border-radius:50%;background:var(--teall);border:2px solid var(--bg);box-shadow:0 0 0 2px var(--teal);flex-shrink:0;}
-.tl-line-seg{flex:1;width:1px;background:var(--border);margin-top:6px;min-height:60px;}
-.tl-body{padding-bottom:0.5rem;}
-.tl-co{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;color:var(--tealp);text-transform:uppercase;margin-bottom:0.25rem;}
-.tl-role{font-size:1.05rem;font-weight:500;color:var(--white);margin-bottom:0.6rem;}
-.tl-desc{font-size:0.87rem;color:var(--muted);font-weight:300;line-height:1.75;}
-.tl-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.9rem;}
-.tag{font-family:'DM Mono',monospace;font-size:0.66rem;letter-spacing:0.04em;color:var(--tealp);background:rgba(29,158,117,0.08);border:1px solid rgba(29,158,117,0.22);padding:0.22rem 0.65rem;border-radius:2px;}
+.about-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  padding:35px;
+  border-radius:24px;
+}
+
+.about-card p{
+  color:var(--muted);
+}
+
+/* STACK */
+
+.stack-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:18px;
+}
+
+.stack{
+  border:1px solid var(--line);
+  background:var(--card);
+  border-radius:18px;
+  padding:20px;
+  transition:.3s;
+}
+
+.stack:hover{
+  transform:translateY(-5px);
+  border-color:var(--accent);
+}
+
+.stack h3{
+  margin-bottom:10px;
+}
 
 /* PROJECTS */
-.projects{padding:6rem 0;}
-.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-.proj-card{background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:1.8rem;transition:border-color 0.25s,transform 0.2s;display:flex;flex-direction:column;}
-.proj-card:hover{border-color:var(--tealp);transform:translateY(-4px);}
-.proj-n{font-family:'DM Mono',monospace;font-size:0.67rem;letter-spacing:0.1em;color:var(--dim);margin-bottom:0.8rem;}
-.proj-card h3{font-size:1rem;font-weight:500;color:var(--white);margin-bottom:0.6rem;line-height:1.45;}
-.proj-card p{font-size:0.85rem;color:var(--muted);font-weight:300;line-height:1.7;flex:1;}
-.proj-badge{display:inline-block;margin-top:1.2rem;font-family:'DM Mono',monospace;font-size:0.63rem;letter-spacing:0.07em;background:rgba(29,158,117,0.1);color:var(--tealp);padding:0.28rem 0.75rem;border-radius:2px;border:1px solid rgba(29,158,117,0.2);align-self:flex-start;}
 
-/* CERTS */
-.certs{padding:6rem 0;}
-.cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;}
-.cert-item{display:flex;align-items:center;gap:1rem;padding:1rem 1.4rem;background:var(--bg2);border:1px solid var(--border);border-radius:4px;transition:border-color 0.2s,background 0.2s;}
-.cert-item:hover{border-color:var(--tealp);background:var(--bg3);}
-.cert-dot{width:7px;height:7px;background:var(--teall);border-radius:50%;flex-shrink:0;}
-.cert-info{flex:1;}
-.cert-name{font-size:0.88rem;color:var(--white);font-weight:400;line-height:1.4;}
-.cert-by{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;color:var(--dim);margin-top:0.15rem;}
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+  gap:28px;
+}
+
+.project{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:28px;
+  overflow:hidden;
+  transition:.3s;
+}
+
+.project:hover{
+  transform:translateY(-6px);
+  border-color:var(--accent);
+}
+
+.project-image{
+  height:220px;
+  background:linear-gradient(135deg,#111827,#1e293b);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:3rem;
+}
+
+.project-content{
+  padding:28px;
+}
+
+.project-content h3{
+  margin-bottom:12px;
+  font-size:1.3rem;
+}
+
+.project-content p{
+  color:var(--muted);
+  margin-bottom:20px;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:25px;
+}
+
+.tag{
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(74,222,128,.1);
+  border:1px solid rgba(74,222,128,.2);
+  color:var(--accent);
+  font-size:.8rem;
+}
+
+.project-links{
+  display:flex;
+  gap:12px;
+}
+
+.small-btn{
+  padding:10px 18px;
+  border-radius:10px;
+  border:1px solid var(--line);
+  font-size:.9rem;
+  transition:.3s;
+}
+
+.small-btn:hover{
+  border-color:var(--accent);
+}
+
+/* EXPERIENCE */
+
+.timeline{
+  border-left:2px solid var(--line);
+  margin-left:15px;
+}
+
+.t-item{
+  position:relative;
+  padding-left:40px;
+  margin-bottom:60px;
+}
+
+.t-item::before{
+  content:'';
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:var(--accent);
+  position:absolute;
+  left:-10px;
+  top:5px;
+  box-shadow:0 0 25px var(--accent);
+}
+
+.t-item span{
+  color:var(--accent);
+  font-size:.9rem;
+}
+
+.t-item h3{
+  margin:10px 0;
+  font-size:1.5rem;
+}
+
+.t-item p{
+  color:var(--muted);
+}
 
 /* CONTACT */
-.contact{padding:6rem 0 8rem;}
-.contact-box{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:5rem 4rem;text-align:center;position:relative;overflow:hidden;}
-.contact-box::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:400px;height:400px;background:radial-gradient(circle,rgba(29,158,117,0.07) 0%,transparent 65%);pointer-events:none;}
-.contact-box h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--white);margin-bottom:1rem;}
-.contact-box p{color:var(--muted);font-weight:300;font-size:0.97rem;max-width:460px;margin:0 auto 2.8rem;}
-.contact-links{display:flex;justify-content:center;flex-wrap:wrap;gap:0.8rem;}
-.c-link{display:flex;align-items:center;gap:0.55rem;padding:0.72rem 1.7rem;border:1px solid var(--border);border-radius:3px;color:var(--pale);text-decoration:none;font-size:0.84rem;font-family:'DM Mono',monospace;letter-spacing:0.04em;transition:border-color 0.2s,color 0.2s,background 0.2s;}
-.c-link:hover{border-color:var(--tealp);color:var(--tealp);background:var(--glow);}
+
+.contact-card{
+  background:linear-gradient(180deg,var(--card),rgba(255,255,255,.02));
+  border:1px solid var(--line);
+  border-radius:30px;
+  padding:70px;
+  text-align:center;
+}
+
+.contact-card p{
+  color:var(--muted);
+  max-width:700px;
+  margin:20px auto 40px;
+}
+
+.contact-links{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:16px;
+}
 
 /* FOOTER */
-footer{text-align:center;padding:1.8rem;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--dim);position:relative;z-index:1;}
 
-/* ANIMATIONS */
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
-.reveal{opacity:0;transform:translateY(26px);transition:opacity 0.6s ease,transform 0.6s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
-.reveal-d1{transition-delay:0.1s;}
-.reveal-d2{transition-delay:0.2s;}
+footer{
+  padding:40px 0;
+  text-align:center;
+  color:var(--muted);
+  border-top:1px solid var(--line);
+  position:relative;
+  z-index:2;
+}
 
 /* MOBILE */
-@media(max-width:860px){
-  .nav-links{gap:1.5rem;}
-  .hero{padding:7rem 5% 4rem;}
-  .hero h1{font-size:clamp(2.6rem,11vw,4rem);}
-  .about-grid{grid-template-columns:1fr;gap:2.5rem;}
-  .exp-grid{grid-template-columns:1fr 1fr;}
-  .proj-grid{grid-template-columns:1fr;}
-  .cert-grid{grid-template-columns:1fr;}
-  .tl-item{grid-template-columns:auto 20px 1fr;gap:0 1rem;}
-  .tl-date{font-size:0.65rem;}
-  .contact-box{padding:3rem 1.5rem;}
+
+@media(max-width:900px){
+
+  .hero-grid,
+  .about-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding-top:120px;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .contact-card{
+    padding:40px 25px;
+  }
+
 }
-@media(max-width:520px){
-  .nav-links{display:none;}
-  .exp-grid{grid-template-columns:1fr;}
-  .hero-btns{flex-direction:column;}
-  .btn-solid,.btn-outline{text-align:center;}
-  .tl-item{grid-template-columns:1fr;gap:0.3rem;}
-  .tl-date{text-align:left;}
-  .tl-spine{display:none;}
-}
+
 </style>
 </head>
+
 <body>
-<canvas id="bg-canvas"></canvas>
+
+<canvas id="particles"></canvas>
+
+<!-- NAV -->
+
 <nav>
-  <div class="nav-logo">SVV // AI ENGINEER</div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#expertise">Expertise</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <div class="nav-inner">
+    <div class="logo">SVV // AI ENGINEER</div>
+
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#stack">Tech Stack</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
 </nav>
 
+<!-- HERO -->
+
 <section class="hero">
-  <div class="hero-inner">
-    <div class="hero-badge">Available for advisory calls · Clarity.fm</div>
-    <h1>Sree Vishnu<em>Vardhan</em></h1>
-    <div class="hero-role">Senior AI Engineer · Accenture · Life Sciences</div>
-    <p class="hero-sub">I build GenAI and agentic AI systems that automate complex scientific workflows — currently at Roche, where these systems have improved productivity by ~65%.</p>
-    <div class="hero-btns">
-      <a href="#contact" class="btn-solid">Get in Touch</a>
-      <a href="#work" class="btn-outline">View My Work</a>
+
+  <div class="container hero-grid">
+
+    <div>
+
+      <div class="badge">
+        Available for AI Consulting & Advisory
+      </div>
+
+      <h1>
+        Building <span>Enterprise GenAI</span><br>
+        Systems for the Future
+      </h1>
+
+      <p>
+        AI Engineer specializing in Agentic AI, Knowledge Graphs,
+        GraphRAG, and enterprise GenAI systems for Life Sciences.
+        Currently building production-grade AI systems at Accenture for Roche.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#projects" class="btn btn-primary">
+          View Projects
+        </a>
+
+        <a href="#contact" class="btn btn-outline">
+          Contact Me
+        </a>
+
+        <a href="resume.pdf" class="btn btn-outline" download>
+          Download Resume
+        </a>
+
+      </div>
+
     </div>
+
+    <div class="hero-card">
+
+      <div class="profile">
+        <img src="profile.jpg" alt="Profile">
+      </div>
+
+      <div class="quick-stats">
+
+        <div class="q-card">
+          <h3>65%</h3>
+          <p>Workflow productivity improvement</p>
+        </div>
+
+        <div class="q-card">
+          <h3>5+</h3>
+          <p>Enterprise applications delivered</p>
+        </div>
+
+        <div class="q-card">
+          <h3>2×</h3>
+          <p>Scopus indexed publications</p>
+        </div>
+
+        <div class="q-card">
+          <h3>3+</h3>
+          <p>Years in enterprise AI engineering</p>
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
+
 </section>
 
-<section class="about" id="about">
-  <div class="wrap">
+<!-- ABOUT -->
+
+<section id="about">
+
+  <div class="container">
+
+    <div class="section-top">
+      <div class="eyebrow">About</div>
+      <h2 class="title">Engineer at the intersection of AI & Life Sciences</h2>
+    </div>
+
     <div class="about-grid">
-      <div class="about-text reveal">
-        <div class="sec-eyebrow">About</div>
-        <div class="sec-title">Engineer at the edge of AI and life sciences</div>
-        <p>I design and build <strong>production-grade GenAI and multi-agent AI systems</strong> — currently at Roche via Accenture, leading development of two AI applications automating drug discovery and clinical trial workflows.</p>
-        <p>My work sits at the intersection of AI engineering and consulting: <strong>knowledge graph-driven architectures</strong>, LLM integration, agentic frameworks, and helping organizations find and act on real AI opportunities — no hype, just what works.</p>
-        <p>Published researcher (Scopus-indexed), patent holder, and currently pursuing an MBA in General Management alongside my engineering work.</p>
+
+      <div class="about-card">
+        <p>
+          I build production-grade GenAI and multi-agent AI systems that automate
+          scientific workflows, knowledge discovery, and enterprise intelligence.
+        </p>
       </div>
-      <div class="stats-grid reveal reveal-d2">
-        <div class="stat"><div class="stat-n">3+</div><div class="stat-l">Years in enterprise AI</div></div>
-        <div class="stat"><div class="stat-n">~65%</div><div class="stat-l">Productivity gain delivered</div></div>
-        <div class="stat"><div class="stat-n">5+</div><div class="stat-l">MDM applications shipped</div></div>
-        <div class="stat"><div class="stat-n">2×</div><div class="stat-l">Scopus-indexed publications</div></div>
+
+      <div class="about-card">
+        <p>
+          My expertise includes Agentic AI, Knowledge Graphs, GraphRAG,
+          LLM orchestration, semantic web technologies, and enterprise AI strategy.
+        </p>
       </div>
+
     </div>
+
   </div>
+
 </section>
 
-<hr class="divider">
+<!-- STACK -->
 
-<section class="expertise" id="expertise">
-  <div class="wrap">
-    <div class="reveal"><div class="sec-eyebrow">Expertise</div></div>
-    <div class="sec-title reveal">What I build and advise on</div>
-    <div class="exp-grid">
-      <div class="exp-card reveal"><div class="exp-icon">🤖</div><h3>Agentic AI Systems</h3><p>Multi-agent framework design, orchestration pipelines, and autonomous workflow automation using ADK and Azure AI Foundry.</p></div>
-      <div class="exp-card reveal reveal-d1"><div class="exp-icon">🧬</div><h3>GenAI for Life Sciences</h3><p>LLM-powered applications for drug discovery, clinical trial automation, and scientific workflow acceleration.</p></div>
-      <div class="exp-card reveal reveal-d2"><div class="exp-icon">🕸️</div><h3>Knowledge Graphs</h3><p>RDF/SPARQL-based semantic data architectures using Apache Jena — linking complex scientific entities at scale.</p></div>
-      <div class="exp-card reveal"><div class="exp-icon">⚙️</div><h3>RAG & LLM Integration</h3><p>Retrieval-augmented generation pipelines, prompt engineering, and embedding-based search across enterprise data.</p></div>
-      <div class="exp-card reveal reveal-d1"><div class="exp-icon">☁️</div><h3>Cloud AI Platforms</h3><p>End-to-end deployment on Azure AI Foundry and Google Vertex AI — model serving, scaling, and monitoring in production.</p></div>
-      <div class="exp-card reveal reveal-d2"><div class="exp-icon">🧭</div><h3>Enterprise AI Strategy</h3><p>AI readiness assessments, use case prioritization, adoption frameworks, and stakeholder communication for AI initiatives.</p></div>
+<section id="stack">
+
+  <div class="container">
+
+    <div class="section-top">
+      <div class="eyebrow">Tech Stack</div>
+      <h2 class="title">Technologies I Work With</h2>
     </div>
+
+    <div class="stack-grid">
+
+      <div class="stack">
+        <h3>AI & LLM</h3>
+        <p>LangChain, MCP, Azure AI, Vertex AI, OpenAI</p>
+      </div>
+
+      <div class="stack">
+        <h3>Knowledge Graphs</h3>
+        <p>Apache Jena, RDF, SPARQL, GraphRAG</p>
+      </div>
+
+      <div class="stack">
+        <h3>Backend</h3>
+        <p>Java, Spring Boot, Python, REST APIs</p>
+      </div>
+
+      <div class="stack">
+        <h3>Frontend</h3>
+        <p>Angular, TypeScript, HTML, CSS</p>
+      </div>
+
+      <div class="stack">
+        <h3>Cloud</h3>
+        <p>Azure, Vertex AI, Docker, Kubernetes</p>
+      </div>
+
+      <div class="stack">
+        <h3>Databases</h3>
+        <p>MongoDB, MySQL, Vector DBs</p>
+      </div>
+
+    </div>
+
   </div>
+
 </section>
 
-<hr class="divider">
+<!-- PROJECTS -->
 
-<section class="work" id="work">
-  <div class="wrap">
-    <div class="reveal"><div class="sec-eyebrow">Experience</div></div>
-    <div class="sec-title reveal">Work history</div>
+<section id="projects">
+
+  <div class="container">
+
+    <div class="section-top">
+      <div class="eyebrow">Projects</div>
+      <h2 class="title">Featured AI Engineering Work</h2>
+    </div>
+
+    <div class="projects-grid">
+
+      <div class="project">
+
+        <div class="project-image">🤖</div>
+
+        <div class="project-content">
+
+          <h3>Agentic AI Drug Discovery System</h3>
+
+          <p>
+            Multi-agent AI ecosystem integrating LLMs with knowledge graphs
+            for autonomous scientific reasoning and workflow automation.
+          </p>
+
+          <div class="tags">
+            <div class="tag">Agentic AI</div>
+            <div class="tag">GraphRAG</div>
+            <div class="tag">LLM</div>
+          </div>
+
+          <div class="project-links">
+            <a href="#" class="small-btn">GitHub</a>
+            <a href="#" class="small-btn">Architecture</a>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="project">
+
+        <div class="project-image">🧠</div>
+
+        <div class="project-content">
+
+          <h3>Enterprise GraphRAG Platform</h3>
+
+          <p>
+            Built semantic retrieval pipelines using RDF/SPARQL and vector search
+            to power enterprise AI decision systems.
+          </p>
+
+          <div class="tags">
+            <div class="tag">Knowledge Graph</div>
+            <div class="tag">RAG</div>
+            <div class="tag">Apache Jena</div>
+          </div>
+
+          <div class="project-links">
+            <a href="#" class="small-btn">GitHub</a>
+            <a href="#" class="small-btn">Demo</a>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="project">
+
+        <div class="project-image">📊</div>
+
+        <div class="project-content">
+
+          <h3>Real-Time AI Market Intelligence</h3>
+
+          <p>
+            AI-powered analytics platform for live data aggregation,
+            insight generation, and enterprise intelligence.
+          </p>
+
+          <div class="tags">
+            <div class="tag">AI Analytics</div>
+            <div class="tag">Pipelines</div>
+            <div class="tag">Realtime</div>
+          </div>
+
+          <div class="project-links">
+            <a href="#" class="small-btn">Architecture</a>
+            <a href="#" class="small-btn">Case Study</a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- EXPERIENCE -->
+
+<section id="experience">
+
+  <div class="container">
+
+    <div class="section-top">
+      <div class="eyebrow">Experience</div>
+      <h2 class="title">Professional Journey</h2>
+    </div>
+
     <div class="timeline">
-      <div class="tl-item reveal">
-        <div class="tl-date">Dec 2025<br>Present</div>
-        <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line-seg"></div></div>
-        <div class="tl-body">
-          <div class="tl-co">Accenture · Roche Engagement</div>
-          <div class="tl-role">Senior Full Stack Software Developer</div>
-          <div class="tl-desc">Building two GenAI-powered applications from scratch to automate scientific workflows — increasing productivity of drug discovery and clinical trial activities by ~65%. Designing agentic AI deployment strategies on clusters, integrating REST APIs with RDF/SPARQL-based knowledge graphs, and supporting consulting leadership with an AI-first mindset.</div>
-          <div class="tl-tags"><span class="tag">GenAI</span><span class="tag">Agentic AI</span><span class="tag">Spring Boot</span><span class="tag">Angular</span><span class="tag">RDF/SPARQL</span><span class="tag">Azure AI</span></div>
-        </div>
+
+      <div class="t-item">
+        <span>2025 — Present</span>
+        <h3>Senior AI Engineer · Accenture</h3>
+        <p>
+          Building enterprise GenAI systems for Roche focused on drug discovery,
+          workflow automation, and knowledge-driven AI architectures.
+        </p>
       </div>
-      <div class="tl-item reveal">
-        <div class="tl-date">Nov 2022<br>Nov 2025</div>
-        <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line-seg"></div></div>
-        <div class="tl-body">
-          <div class="tl-co">Accenture India</div>
-          <div class="tl-role">Full Stack Software Developer</div>
-          <div class="tl-desc">Delivered 5+ Master Data Management applications reducing manual data handling by ~40% and saving 20+ hours/month. Built RESTful services with RDF/SPARQL integrations, automated release cycles using JFrog improving delivery by ~20%, and contributed to AI readiness and use case prioritization exercises.</div>
-          <div class="tl-tags"><span class="tag">MDM</span><span class="tag">REST APIs</span><span class="tag">CI/CD</span><span class="tag">JFrog</span><span class="tag">JUnit</span><span class="tag">Mockito</span></div>
-        </div>
+
+      <div class="t-item">
+        <span>2022 — 2025</span>
+        <h3>Full Stack Developer · Accenture</h3>
+        <p>
+          Delivered enterprise MDM systems integrating RDF/SPARQL,
+          REST APIs, CI/CD automation, and semantic data architectures.
+        </p>
       </div>
-      <div class="tl-item reveal">
-        <div class="tl-date">Jan 2022<br>Oct 2022</div>
-        <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line-seg"></div></div>
-        <div class="tl-body">
-          <div class="tl-co">EjAmerica · Irvine (Remote)</div>
-          <div class="tl-role">Full Stack Developer Intern</div>
-          <div class="tl-desc">Designed an automated trading system improving execution efficiency by 15% through Python-based backtesting and algorithmic trading strategy optimisation.</div>
-          <div class="tl-tags"><span class="tag">Python</span><span class="tag">Algorithmic Trading</span><span class="tag">Backtesting</span></div>
-        </div>
+
+      <div class="t-item">
+        <span>2022</span>
+        <h3>Full Stack Intern · EjAmerica</h3>
+        <p>
+          Built algorithmic trading systems with Python backtesting
+          and automated execution workflows.
+        </p>
       </div>
+
     </div>
+
   </div>
+
 </section>
 
-<hr class="divider">
+<!-- CONTACT -->
 
-<section class="projects" id="projects">
-  <div class="wrap">
-    <div class="reveal"><div class="sec-eyebrow">Projects & Research</div></div>
-    <div class="sec-title reveal">Selected work</div>
-    <div class="proj-grid">
-      <div class="proj-card reveal">
-        <div class="proj-n">01 — Engineering</div>
-        <h3>Agentic AI Ecosystem for Drug Discovery</h3>
-        <p>Designed a multi-agent GenAI system to automate data analysis, knowledge retrieval, and research workflows in drug discovery. Integrates LLMs with a knowledge graph backend for context-aware scientific reasoning.</p>
-        <span class="proj-badge">Multi-Agent · Knowledge Graph · LLM</span>
-      </div>
-      <div class="proj-card reveal reveal-d1">
-        <div class="proj-n">02 — Engineering</div>
-        <h3>Real-Time Market Intelligence Platform</h3>
-        <p>Developed a platform for real-time data aggregation, analysis, and insight generation — enabling fast, evidence-based decision-making through live data pipelines and AI-assisted analysis.</p>
-        <span class="proj-badge">Real-Time · AI Analytics · Pipelines</span>
-      </div>
-      <div class="proj-card reveal">
-        <div class="proj-n">03 — Research · Scopus Indexed</div>
-        <h3>Fuzzy Logic–Based Virtual Inertia Injection</h3>
-        <p>Published at ICSTACE 2023 (NIT Surat). Research improving DC compound motor speed control using fuzzy logic-based virtual inertia injection.</p>
-        <span class="proj-badge">Published · NIT Surat · 2023</span>
-      </div>
-      <div class="proj-card reveal reveal-d1">
-        <div class="proj-n">04 — Patent</div>
-        <h3>ANN-Based Virtual Inertia Voltage Regulator</h3>
-        <p>Patented an ANN-based controller that regulates voltage to inject virtual inertia for stable electric motor speed control. Also a Scopus-indexed Springer publication at SocProS 2020 (IIT Indore).</p>
-        <span class="proj-badge">Patent · Springer · IIT Indore</span>
-      </div>
-    </div>
-  </div>
-</section>
+<section id="contact">
 
-<hr class="divider">
+  <div class="container">
 
-<section class="certs" id="certs">
-  <div class="wrap">
-    <div class="reveal"><div class="sec-eyebrow">Credentials</div></div>
-    <div class="sec-title reveal">Certifications</div>
-    <div class="cert-grid reveal">
-      <div class="cert-item"><div class="cert-dot"></div><div class="cert-info"><div class="cert-name">Azure AI Engineer Associate (AI-102)</div><div class="cert-by">Microsoft</div></div></div>
-      <div class="cert-item"><div class="cert-dot"></div><div class="cert-info"><div class="cert-name">Deploy Multi-Agent Systems with ADK & Vertex AI</div><div class="cert-by">Google</div></div></div>
-      <div class="cert-item"><div class="cert-dot"></div><div class="cert-info"><div class="cert-name">Azure AI Fundamentals (AI-900)</div><div class="cert-by">Microsoft</div></div></div>
-      <div class="cert-item"><div class="cert-dot"></div><div class="cert-info"><div class="cert-name">GitHub Actions (GH-200)</div><div class="cert-by">Microsoft</div></div></div>
-      <div class="cert-item"><div class="cert-dot"></div><div class="cert-info"><div class="cert-name">MongoDB Associate & Architect Certification</div><div class="cert-by">MongoDB</div></div></div>
-      <div class="cert-item"><div class="cert-dot"></div><div class="cert-info"><div class="cert-name">AI-Infinity Certification — Grade A+</div><div class="cert-by">Talent Sprint</div></div></div>
-      <div class="cert-item"><div class="cert-dot"></div><div class="cert-info"><div class="cert-name">Full Stack Development Training</div><div class="cert-by">IIT Bombay</div></div></div>
-    </div>
-  </div>
-</section>
+    <div class="contact-card">
 
-<hr class="divider">
+      <div class="eyebrow">Contact</div>
 
-<section class="contact" id="contact">
-  <div class="wrap">
-    <div class="contact-box reveal">
-      <h2>Let's talk AI</h2>
-      <p>Available for advisory calls, consulting projects, and conversations about GenAI, agentic systems, and enterprise AI strategy.</p>
+      <h2 class="title">
+        Let’s Build Something Intelligent
+      </h2>
+
+      <p>
+        Open to AI consulting, GenAI architecture discussions,
+        enterprise AI strategy, and innovative collaborations.
+      </p>
+
       <div class="contact-links">
-        <a href="mailto:sreevishnu.dharmavaram@gmail.com" class="c-link">✉ Email</a>
-        <a href="https://linkedin.com/in/YOUR-LINKEDIN" class="c-link" target="_blank">↗ LinkedIn</a>
-        <a href="https://clarity.fm/YOUR-PROFILE" class="c-link" target="_blank">◎ Clarity.fm</a>
-        <a href="https://github.com/sreevishnu1999" class="c-link" target="_blank">⌥ GitHub</a>
+
+        <a href="mailto:sreevishnu.dharmavaram@gmail.com"
+        class="btn btn-primary">
+          Email Me
+        </a>
+
+        <a href="https://github.com/sreevishnu1999"
+        target="_blank"
+        class="btn btn-outline">
+          GitHub
+        </a>
+
+        <a href="https://linkedin.com/in/YOUR-LINKEDIN"
+        target="_blank"
+        class="btn btn-outline">
+          LinkedIn
+        </a>
+
       </div>
+
     </div>
+
   </div>
+
 </section>
 
-<footer>© 2026 Sree Vishnu Vardhan Dharmavaram &nbsp;·&nbsp; Built with HTML · Hosted on GitHub Pages</footer>
+<footer>
+  © 2026 Sree Vishnu Vardhan Dharmavaram · Built with passion for AI Engineering
+</footer>
 
 <script>
-const canvas = document.getElementById('bg-canvas');
-const ctx = canvas.getContext('2d');
-let nodes = [], W, H;
-function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-function initNodes(){
-  nodes = [];
-  const n = Math.floor((W*H)/20000);
-  for(let i=0;i<n;i++) nodes.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,r:Math.random()*1.8+0.8});
-}
-function draw(){
-  ctx.clearRect(0,0,W,H);
-  for(let i=0;i<nodes.length;i++) for(let j=i+1;j<nodes.length;j++){
-    const dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y, d=Math.sqrt(dx*dx+dy*dy);
-    if(d<130){ ctx.beginPath(); ctx.strokeStyle=`rgba(29,158,117,${0.4*(1-d/130)})`; ctx.lineWidth=0.5; ctx.moveTo(nodes[i].x,nodes[i].y); ctx.lineTo(nodes[j].x,nodes[j].y); ctx.stroke(); }
-  }
-  nodes.forEach(n=>{ ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2); ctx.fillStyle='rgba(78,203,153,0.65)'; ctx.fill(); n.x+=n.vx; n.y+=n.vy; if(n.x<0||n.x>W)n.vx*=-1; if(n.y<0||n.y>H)n.vy*=-1; });
-  requestAnimationFrame(draw);
-}
-resize(); initNodes(); draw();
-window.addEventListener('resize',()=>{ resize(); initNodes(); });
 
-const obs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }});
-},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+/* PARTICLE BACKGROUND */
+
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+
+let w,h,particles=[];
+
+function resize(){
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+}
+
+window.addEventListener('resize',resize);
+resize();
+
+for(let i=0;i<90;i++){
+  particles.push({
+    x:Math.random()*w,
+    y:Math.random()*h,
+    dx:(Math.random()-.5)*0.5,
+    dy:(Math.random()-.5)*0.5,
+    r:Math.random()*2
+  });
+}
+
+function animate(){
+
+  ctx.clearRect(0,0,w,h);
+
+  particles.forEach(p=>{
+
+    p.x += p.dx;
+    p.y += p.dy;
+
+    if(p.x<0||p.x>w) p.dx *= -1;
+    if(p.y<0||p.y>h) p.dy *= -1;
+
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle='rgba(74,222,128,.7)';
+    ctx.fill();
+
+  });
+
+  requestAnimationFrame(animate);
+
+}
+
+animate();
+
 </script>
+
 </body>
 </html>
