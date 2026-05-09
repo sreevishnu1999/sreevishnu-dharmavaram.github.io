@@ -1,993 +1,609 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-<title>Sree Vishnu Vardhan | AI Engineer</title>
-
-<meta name="description"
-content="Sree Vishnu Vardhan — AI Engineer specializing in GenAI, Agentic AI, GraphRAG, Knowledge Graphs, and Enterprise AI Systems."/>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-
-<style>
-
-:root{
-  --bg:#050816;
-  --bg2:#0b1120;
-  --card:#111827;
-  --text:#eef2ff;
-  --muted:#94a3b8;
-  --line:rgba(255,255,255,0.08);
-  --accent:#4ade80;
-  --accent2:#22c55e;
-  --glow:rgba(74,222,128,.18);
-}
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:'Inter',sans-serif;
-  overflow-x:hidden;
-  line-height:1.7;
-}
-
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-canvas{
-  position:fixed;
-  inset:0;
-  z-index:0;
-  opacity:.35;
-}
-
-.container{
-  width:min(1180px,92%);
-  margin:auto;
-}
-
-section{
-  position:relative;
-  z-index:2;
-  padding:110px 0;
-}
-
-/* NAV */
-
-nav{
-  position:fixed;
-  width:100%;
-  top:0;
-  z-index:999;
-  background:rgba(5,8,22,.78);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--line);
-}
-
-.nav-inner{
-  width:min(1180px,92%);
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:18px 0;
-}
-
-.logo{
-  font-weight:700;
-  font-size:1rem;
-  letter-spacing:.14em;
-  color:var(--accent);
-}
-
-.nav-links{
-  display:flex;
-  gap:30px;
-}
-
-.nav-links a{
-  color:var(--muted);
-  transition:.3s;
-}
-
-.nav-links a:hover{
-  color:var(--text);
-}
-
-/* HERO */
-
-.hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-}
-
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
-  gap:90px;
-  align-items:center;
-}
-
-.badge{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.03);
-  padding:10px 18px;
-  border-radius:999px;
-  margin-bottom:28px;
-  color:var(--accent);
-  font-size:.85rem;
-}
-
-.badge::before{
-  content:'';
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:var(--accent);
-  box-shadow:0 0 15px var(--accent);
-}
-
-.hero h1{
-  font-size:clamp(3rem,8vw,6rem);
-  line-height:.95;
-  margin-bottom:25px;
-  font-family:'Space Grotesk',sans-serif;
-}
-
-.hero h1 span{
-  color:var(--accent);
-}
-
-.hero p{
-  color:var(--muted);
-  font-size:1.08rem;
-  max-width:650px;
-  margin-bottom:40px;
-}
-
-.hero-buttons{
-  display:flex;
-  flex-wrap:wrap;
-  gap:16px;
-}
-
-.btn{
-  padding:15px 28px;
-  border-radius:14px;
-  font-weight:600;
-  transition:.3s;
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-}
-
-.btn-primary{
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:#04110a;
-  box-shadow:0 10px 40px var(--glow);
-}
-
-.btn-primary:hover{
-  transform:translateY(-4px);
-}
-
-.btn-outline{
-  border:1px solid var(--line);
-}
-
-.btn-outline:hover{
-  border-color:var(--accent);
-  background:rgba(74,222,128,.08);
-}
-
-/* HERO CARD */
-
-.hero-card{
-  background:linear-gradient(180deg,var(--card),rgba(255,255,255,.02));
-  border:1px solid var(--line);
-  border-radius:36px;
-  padding:35px;
-  position:relative;
-  overflow:hidden;
-}
-
-.hero-card::after{
-  content:'';
-  position:absolute;
-  width:340px;
-  height:340px;
-  background:radial-gradient(circle,var(--glow),transparent 70%);
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  z-index:0;
-}
-
-/* PROFILE IMAGE */
-
-.profile{
-  width:320px;
-  height:420px;
-  margin:auto;
-  overflow:hidden;
-  border-radius:28px;
-  border:1px solid rgba(255,255,255,0.08);
-  background:#111827;
-  box-shadow:
-    0 0 40px rgba(74,222,128,.12),
-    0 20px 60px rgba(0,0,0,.45);
-  position:relative;
-  z-index:2;
-}
-
-.profile img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center top;
-  display:block;
-}
-
-/* STATS */
-
-.quick-stats{
-  margin-top:28px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
-  position:relative;
-  z-index:2;
-}
-
-.q-card{
-  background:rgba(255,255,255,.03);
-  border:1px solid var(--line);
-  border-radius:20px;
-  padding:20px;
-}
-
-.q-card h3{
-  color:var(--accent);
-  font-size:1.8rem;
-  margin-bottom:6px;
-}
-
-.q-card p{
-  margin:0;
-  font-size:.9rem;
-  color:var(--muted);
-}
-
-/* TITLES */
-
-.section-top{
-  margin-bottom:60px;
-}
-
-.eyebrow{
-  color:var(--accent);
-  font-size:.82rem;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  margin-bottom:10px;
-}
-
-.title{
-  font-size:clamp(2rem,5vw,3.5rem);
-  line-height:1.1;
-  font-family:'Space Grotesk',sans-serif;
-}
-
-/* ABOUT */
-
-.about-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:30px;
-}
-
-.about-card{
-  background:var(--card);
-  border:1px solid var(--line);
-  padding:35px;
-  border-radius:24px;
-}
-
-.about-card p{
-  color:var(--muted);
-}
-
-/* STACK */
-
-.stack-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:18px;
-}
-
-.stack{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:22px;
-  padding:24px;
-  transition:.3s;
-}
-
-.stack:hover{
-  transform:translateY(-6px);
-  border-color:var(--accent);
-}
-
-.stack h3{
-  margin-bottom:10px;
-}
-
-/* PROJECTS */
-
-.projects-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:28px;
-}
-
-.project{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:28px;
-  overflow:hidden;
-  transition:.3s;
-}
-
-.project:hover{
-  transform:translateY(-6px);
-  border-color:var(--accent);
-}
-
-.project-image{
-  height:220px;
-  background:linear-gradient(135deg,#0f172a,#1e293b);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:3rem;
-}
-
-.project-content{
-  padding:28px;
-}
-
-.project-content h3{
-  margin-bottom:12px;
-}
-
-.project-content p{
-  color:var(--muted);
-  margin-bottom:20px;
-}
-
-.tags{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-bottom:24px;
-}
-
-.tag{
-  background:rgba(74,222,128,.1);
-  border:1px solid rgba(74,222,128,.2);
-  color:var(--accent);
-  padding:8px 14px;
-  border-radius:999px;
-  font-size:.8rem;
-}
-
-.project-links{
-  display:flex;
-  gap:12px;
-}
-
-.small-btn{
-  padding:10px 18px;
-  border-radius:12px;
-  border:1px solid var(--line);
-  transition:.3s;
-}
-
-.small-btn:hover{
-  border-color:var(--accent);
-}
-
-/* EXPERIENCE */
-
-.timeline{
-  border-left:2px solid var(--line);
-  margin-left:15px;
-}
-
-.t-item{
-  position:relative;
-  padding-left:40px;
-  margin-bottom:60px;
-}
-
-.t-item::before{
-  content:'';
-  width:18px;
-  height:18px;
-  border-radius:50%;
-  background:var(--accent);
-  position:absolute;
-  left:-10px;
-  top:5px;
-  box-shadow:0 0 25px var(--accent);
-}
-
-.t-item span{
-  color:var(--accent);
-}
-
-.t-item h3{
-  margin:12px 0;
-  font-size:1.5rem;
-}
-
-.t-item p{
-  color:var(--muted);
-}
-
-/* CONTACT */
-
-.contact-card{
-  background:linear-gradient(180deg,var(--card),rgba(255,255,255,.02));
-  border:1px solid var(--line);
-  border-radius:34px;
-  padding:70px;
-  text-align:center;
-}
-
-.contact-card p{
-  color:var(--muted);
-  max-width:700px;
-  margin:20px auto 40px;
-}
-
-.contact-links{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:16px;
-}
-
-/* FOOTER */
-
-footer{
-  padding:40px 0;
-  text-align:center;
-  color:var(--muted);
-  border-top:1px solid var(--line);
-  position:relative;
-  z-index:2;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-  .hero-grid,
-  .about-grid{
-    grid-template-columns:1fr;
-  }
-
-  .nav-links{
-    display:none;
-  }
-
-  .profile{
-    width:100%;
-    max-width:320px;
-    height:420px;
-  }
-
-  .contact-card{
-    padding:40px 25px;
-  }
-
-}
-
-</style>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Sree Vishnu Vardhan | AI Engineer</title>
+
+  <meta name="description"
+    content="Sree Vishnu Vardhan — AI Engineer specializing in GenAI, Agentic AI, Knowledge Graphs, GraphRAG, and Enterprise AI Systems." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg2: #0b1120;
+      --card: #111827;
+      --text: #eef2ff;
+      --muted: #94a3b8;
+      --line: rgba(255, 255, 255, 0.08);
+      --accent: #4ade80;
+      --accent2: #22c55e;
+      --glow: rgba(74, 222, 128, .18);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      opacity: .35;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    section {
+      position: relative;
+      z-index: 2;
+      padding: 110px 0;
+    }
+
+    /* NAV */
+
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 999;
+      background: rgba(5, 8, 22, .78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      width: min(1180px, 92%);
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: .14em;
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      transition: .3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 90px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .03);
+      padding: 10px 18px;
+      border-radius: 999px;
+      margin-bottom: 28px;
+      color: var(--accent);
+      font-size: .85rem;
+    }
+
+    .badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 15px var(--accent);
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: .95;
+      margin-bottom: 25px;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 650px;
+      margin-bottom: 40px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .btn {
+      padding: 15px 28px;
+      border-radius: 14px;
+      font-weight: 600;
+      transition: .3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #04110a;
+      box-shadow: 0 10px 40px var(--glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--line);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      background: rgba(74, 222, 128, .08);
+    }
+
+    /* HERO CARD */
+
+    .hero-card {
+      background: linear-gradient(180deg, var(--card), rgba(255, 255, 255, .02));
+      border: 1px solid var(--line);
+      border-radius: 36px;
+      padding: 35px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: '';
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      background: radial-gradient(circle, var(--glow), transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+
+    /* PROFILE */
+
+    .profile {
+      width: 320px;
+      height: 420px;
+      margin: auto;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #111827;
+      box-shadow:
+        0 0 40px rgba(74, 222, 128, .12),
+        0 20px 60px rgba(0, 0, 0, .45);
+      position: relative;
+      z-index: 2;
+    }
+
+    .profile img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    /* STATS */
+
+    .quick-stats {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .q-card {
+      background: rgba(255, 255, 255, .03);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .q-card h3 {
+      color: var(--accent);
+      font-size: 1.8rem;
+      margin-bottom: 6px;
+    }
+
+    .q-card p {
+      margin: 0;
+      font-size: .9rem;
+      color: var(--muted);
+    }
+
+    /* TITLES */
+
+    .section-top {
+      margin-bottom: 60px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: .82rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .about-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 35px;
+      border-radius: 24px;
+    }
+
+    .about-card p {
+      color: var(--muted);
+    }
+
+    /* STACK */
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+    }
+
+    .stack {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      transition: .3s;
+    }
+
+    .stack:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+    }
+
+    .stack h3 {
+      margin-bottom: 10px;
+    }
+
+    /* PROJECTS */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+
+    .project {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      overflow: hidden;
+      transition: .3s;
+    }
+
+    .project:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+    }
+
+    .project-image {
+      height: 220px;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    .project-content {
+      padding: 28px;
+    }
+
+    .project-content h3 {
+      margin-bottom: 12px;
+    }
+
+    .project-content p {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .tag {
+      background: rgba(74, 222, 128, .1);
+      border: 1px solid rgba(74, 222, 128, .2);
+      color: var(--accent);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: .8rem;
+    }
+
+    /* EXPERIENCE */
+
+    .timeline {
+      border-left: 2px solid var(--line);
+      margin-left: 15px;
+    }
+
+    .t-item {
+      position: relative;
+      padding-left: 40px;
+      margin-bottom: 60px;
+    }
+
+    .t-item::before {
+      content: '';
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent);
+      position: absolute;
+      left: -10px;
+      top: 5px;
+      box-shadow: 0 0 25px var(--accent);
+    }
+
+    .t-item span {
+      color: var(--accent);
+    }
+
+    .t-item h3 {
+      margin: 12px 0;
+      font-size: 1.5rem;
+    }
+
+    .t-item p {
+      color: var(--muted);
+    }
+
+    /* CONTACT */
+
+    .contact-card {
+      background: linear-gradient(180deg, var(--card), rgba(255, 255, 255, .02));
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: 70px;
+      text-align: center;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      max-width: 700px;
+      margin: 20px auto 40px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      position: relative;
+      z-index: 2;
+    }
+
+    @media(max-width:900px) {
+
+      .hero-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .profile {
+        width: 100%;
+        max-width: 320px;
+        height: 420px;
+      }
+
+      .contact-card {
+        padding: 40px 25px;
+      }
+
+    }
+  </style>
+
 </head>
 
 <body>
 
-<canvas id="particles"></canvas>
+  <!-- NAV -->
 
-<!-- NAV -->
+  <nav>
 
-<nav>
+    <div class="nav-inner">
 
-  <div class="nav-inner">
-
-    <div class="logo">
-      SVV // AI ENGINEER
-    </div>
-
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#stack">Tech Stack</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
-    </div>
-
-  </div>
-
-</nav>
-
-<!-- HERO -->
-
-<section class="hero">
-
-  <div class="container hero-grid">
-
-    <div>
-
-      <div class="badge">
-        Available for AI Consulting & Advisory
+      <div class="logo">
+        SVV // AI ENGINEER
       </div>
 
-      <h1>
-        Building <span>Enterprise GenAI</span><br>
-        Systems for the Future
-      </h1>
-
-      <p>
-        AI Engineer specializing in Agentic AI, GraphRAG,
-        Knowledge Graphs, and enterprise AI systems for Life Sciences.
-        Currently building production-grade GenAI systems at Accenture for Roche.
-      </p>
-
-      <div class="hero-buttons">
-
-        <a href="#projects" class="btn btn-primary">
-          View Projects
-        </a>
-
-        <a href="#contact" class="btn btn-outline">
-          Contact Me
-        </a>
-
-        <a href="resume.pdf" class="btn btn-outline" download>
-          Download Resume
-        </a>
-
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#stack">Tech Stack</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
       </div>
 
     </div>
 
-    <!-- HERO CARD -->
+  </nav>
 
-    <div class="hero-card">
+  <!-- HERO -->
 
-      <!-- PROFILE -->
+  <section class="hero">
 
-      <div class="profile">
-        <img
-          src="./images/vishnu-profile.jpg"
-          alt="Sree Vishnu Vardhan">
-      </div>
+    <div class="container hero-grid">
 
-      <!-- STATS -->
+      <div>
 
-      <div class="quick-stats">
-
-        <div class="q-card">
-          <h3>65%</h3>
-          <p>Workflow productivity improvement</p>
+        <div class="badge">
+          Available for AI Consulting & Advisory
         </div>
 
-        <div class="q-card">
-          <h3>5+</h3>
-          <p>Enterprise applications delivered</p>
-        </div>
-
-        <div class="q-card">
-          <h3>2×</h3>
-          <p>Scopus indexed publications</p>
-        </div>
-
-        <div class="q-card">
-          <h3>3+</h3>
-          <p>Years in enterprise AI engineering</p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ABOUT -->
-
-<section id="about">
-
-  <div class="container">
-
-    <div class="section-top">
-      <div class="eyebrow">About</div>
-      <h2 class="title">
-        Engineer at the intersection of AI & Life Sciences
-      </h2>
-    </div>
-
-    <div class="about-grid">
-
-      <div class="about-card">
-        <p>
-          I build production-grade GenAI and multi-agent AI systems
-          that automate scientific workflows, enterprise intelligence,
-          and knowledge-driven reasoning systems.
-        </p>
-      </div>
-
-      <div class="about-card">
-        <p>
-          My expertise includes Agentic AI, GraphRAG,
-          Knowledge Graphs, RDF/SPARQL systems,
-          enterprise AI architecture, and LLM orchestration.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- STACK -->
-
-<section id="stack">
-
-  <div class="container">
-
-    <div class="section-top">
-      <div class="eyebrow">Tech Stack</div>
-      <h2 class="title">
-        Technologies I Work With
-      </h2>
-    </div>
-
-    <div class="stack-grid">
-
-      <div class="stack">
-        <h3>AI & LLM</h3>
-        <p>OpenAI, LangChain, MCP, Azure AI, Vertex AI</p>
-      </div>
-
-      <div class="stack">
-        <h3>Knowledge Graphs</h3>
-        <p>Apache Jena, RDF, SPARQL, GraphRAG</p>
-      </div>
-
-      <div class="stack">
-        <h3>Backend</h3>
-        <p>Java, Spring Boot, Python, REST APIs</p>
-      </div>
-
-      <div class="stack">
-        <h3>Frontend</h3>
-        <p>Angular, TypeScript, HTML, CSS</p>
-      </div>
-
-      <div class="stack">
-        <h3>Cloud</h3>
-        <p>Azure, Docker, Kubernetes, Vertex AI</p>
-      </div>
-
-      <div class="stack">
-        <h3>Databases</h3>
-        <p>MongoDB, MySQL, Vector Databases</p>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- PROJECTS -->
-
-<section id="projects">
-
-  <div class="container">
-
-    <div class="section-top">
-      <div class="eyebrow">Projects</div>
-      <h2 class="title">
-        Featured AI Engineering Work
-      </h2>
-    </div>
-
-    <div class="projects-grid">
-
-      <div class="project">
-
-        <div class="project-image">🤖</div>
-
-        <div class="project-content">
-
-          <h3>Agentic AI Drug Discovery System</h3>
-
-          <p>
-            Multi-agent AI ecosystem integrating LLMs with
-            Knowledge Graphs for scientific reasoning and
-            workflow automation.
-          </p>
-
-          <div class="tags">
-            <div class="tag">Agentic AI</div>
-            <div class="tag">GraphRAG</div>
-            <div class="tag">LLM</div>
-          </div>
-
-          <div class="project-links">
-            <a href="#" class="small-btn">GitHub</a>
-            <a href="#" class="small-btn">Architecture</a>
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="project">
-
-        <div class="project-image">🧠</div>
-
-        <div class="project-content">
-
-          <h3>Enterprise GraphRAG Platform</h3>
-
-          <p>
-            Built semantic retrieval pipelines using RDF/SPARQL
-            and vector search for enterprise AI systems.
-          </p>
-
-          <div class="tags">
-            <div class="tag">Knowledge Graph</div>
-            <div class="tag">RAG</div>
-            <div class="tag">Apache Jena</div>
-          </div>
-
-          <div class="project-links">
-            <a href="#" class="small-btn">GitHub</a>
-            <a href="#" class="small-btn">Demo</a>
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="project">
-
-        <div class="project-image">📊</div>
-
-        <div class="project-content">
-
-          <h3>Real-Time AI Intelligence Platform</h3>
-
-          <p>
-            AI-powered analytics platform for live data aggregation,
-            insight generation, and enterprise intelligence.
-          </p>
-
-          <div class="tags">
-            <div class="tag">Realtime</div>
-            <div class="tag">AI Analytics</div>
-            <div class="tag">Pipelines</div>
-          </div>
-
-          <div class="project-links">
-            <a href="#" class="small-btn">Architecture</a>
-            <a href="#" class="small-btn">Case Study</a>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- EXPERIENCE -->
-
-<section id="experience">
-
-  <div class="container">
-
-    <div class="section-top">
-      <div class="eyebrow">Experience</div>
-      <h2 class="title">
-        Professional Journey
-      </h2>
-    </div>
-
-    <div class="timeline">
-
-      <div class="t-item">
-
-        <span>2025 — Present</span>
-
-        <h3>Senior AI Engineer · Accenture</h3>
+        <h1>
+          Building <span>Enterprise GenAI</span><br>
+          Systems for the Future
+        </h1>
 
         <p>
-          Building enterprise GenAI systems for Roche focused on
-          drug discovery, scientific automation,
-          and knowledge-driven AI architectures.
+          AI Engineer specializing in Agentic AI, GraphRAG,
+          Knowledge Graphs, and enterprise AI systems for Life Sciences.
+          Currently building production-grade GenAI systems at Accenture for Roche.
         </p>
+
+        <div class="hero-buttons">
+
+          <a href="#projects" class="btn btn-primary">
+            View Projects
+          </a>
+
+          <a href="#contact" class="btn btn-outline">
+            Contact Me
+          </a>
+
+        </div>
 
       </div>
 
-      <div class="t-item">
+      <!-- PROFILE CARD -->
 
-        <span>2022 — 2025</span>
+      <div class="hero-card">
 
-        <h3>Full Stack Developer · Accenture</h3>
+        <div class="profile">
 
-        <p>
-          Delivered enterprise MDM systems integrating RDF/SPARQL,
-          REST APIs, CI/CD automation,
-          and semantic data architectures.
-        </p>
+          <img
+            src="./images/image.jpg"
+            alt="Sree Vishnu Vardhan">
 
-      </div>
+        </div>
 
-      <div class="t-item">
+        <div class="quick-stats">
 
-        <span>2022</span>
+          <div class="q-card">
+            <h3>65%</h3>
+            <p>Workflow productivity improvement</p>
+          </div>
 
-        <h3>Full Stack Intern · EjAmerica</h3>
+          <div class="q-card">
+            <h3>5+</h3>
+            <p>Enterprise applications delivered</p>
+          </div>
 
-        <p>
-          Built algorithmic trading systems with Python
-          backtesting and automated execution workflows.
-        </p>
+          <div class="q-card">
+            <h3>2×</h3>
+            <p>Scopus indexed publications</p>
+          </div>
+
+          <div class="q-card">
+            <h3>3+</h3>
+            <p>Years in enterprise AI engineering</p>
+          </div>
+
+        </div>
 
       </div>
 
     </div>
 
-  </div>
-
-</section>
-
-<!-- CONTACT -->
-
-<section id="contact">
-
-  <div class="container">
-
-    <div class="contact-card">
-
-      <div class="eyebrow">
-        Contact
-      </div>
-
-      <h2 class="title">
-        Let’s Build Something Intelligent
-      </h2>
-
-      <p>
-        Open to AI consulting, enterprise AI architecture,
-        GenAI collaborations, and innovative engineering projects.
-      </p>
-
-      <div class="contact-links">
-
-        <a href="mailto:sreevishnu.dharmavaram@gmail.com"
-        class="btn btn-primary">
-          Email Me
-        </a>
-
-        <a href="https://github.com/sreevishnu1999"
-        target="_blank"
-        class="btn btn-outline">
-          GitHub
-        </a>
-
-        <a href="https://linkedin.com"
-        target="_blank"
-        class="btn btn-outline">
-          LinkedIn
-        </a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<footer>
-  © 2026 Sree Vishnu Vardhan Dharmavaram · Built for AI Engineering
-</footer>
-
-<script>
-
-const canvas = document.getElementById('particles');
-const ctx = canvas.getContext('2d');
-
-let w,h,particles=[];
-
-function resize(){
-  w = canvas.width = window.innerWidth;
-  h = canvas.height = window.innerHeight;
-}
-
-window.addEventListener('resize',resize);
-resize();
-
-for(let i=0;i<90;i++){
-  particles.push({
-    x:Math.random()*w,
-    y:Math.random()*h,
-    dx:(Math.random()-.5)*0.5,
-    dy:(Math.random()-.5)*0.5,
-    r:Math.random()*2
-  });
-}
-
-function animate(){
-
-  ctx.clearRect(0,0,w,h);
-
-  particles.forEach(p=>{
-
-    p.x += p.dx;
-    p.y += p.dy;
-
-    if(p.x<0||p.x>w) p.dx *= -1;
-    if(p.y<0||p.y>h) p.dy *= -1;
-
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fillStyle='rgba(74,222,128,.7)';
-    ctx.fill();
-
-  });
-
-  requestAnimationFrame(animate);
-
-}
-
-animate();
-
-</script>
+  </section>
 
 </body>
+
 </html>
