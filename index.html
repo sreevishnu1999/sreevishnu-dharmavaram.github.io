@@ -696,7 +696,7 @@
 </nav>
 
 <!-- ─────────────────── HERO ─────────────────── -->
-<section class="relative flex items-center pt-28 pb-16 overflow-hidden">
+<section class="relative pt-24 sm:pt-28 pb-16 overflow-hidden">
   <!-- Aurora -->
   <div class="aurora" style="top:-150px; left:50%; transform:translateX(-50%);"></div>
 
@@ -710,128 +710,78 @@
   <div class="sparkle" style="top:70%;left:95%;animation-delay:1.8s;"></div>
   <div class="sparkle" style="top:85%;left:20%;animation-delay:2.4s;"></div>
 
-  <div class="relative max-w-7xl mx-auto px-6 w-full">
-    <!-- Status pill -->
-    <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-10 rounded-full border border-mint-400/30 bg-mint-400/5 text-mint-400 text-xs font-mono tracking-wider hero-fade">
-      <span class="relative flex w-2 h-2">
-        <span class="absolute inline-flex h-full w-full rounded-full bg-mint-400 opacity-75 animate-ping"></span>
-        <span class="relative rounded-full w-2 h-2 bg-mint-400"></span>
-      </span>
-      AVAILABLE_FOR_ADVISORY · Q2_2026
-    </div>
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-6 w-full">
+    <div class="grid lg:grid-cols-[1.4fr_1fr] lg:gap-10 xl:gap-14 items-start">
 
-    <!-- Hello mark -->
-    <div class="font-mono text-sm text-mint-400 mb-3 tracking-widest hero-fade">// HELLO, WORLD —</div>
+      <!-- TOP-LEFT: Header (badge, hello, name, tagline) -->
+      <div class="hero-fade order-1">
+        <!-- Status pill -->
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6 lg:mb-8 rounded-full border border-mint-400/30 bg-mint-400/5 text-mint-400 text-[10px] sm:text-xs font-mono tracking-wider">
+          <span class="relative flex w-2 h-2">
+            <span class="absolute inline-flex h-full w-full rounded-full bg-mint-400 opacity-75 animate-ping"></span>
+            <span class="relative rounded-full w-2 h-2 bg-mint-400"></span>
+          </span>
+          AVAILABLE_FOR_ADVISORY · Q2_2026
+        </div>
 
-    <!-- BIG NAME -->
-    <h1 class="hero-title text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] mb-6 max-w-5xl leading-[0.95]">
-      <span class="block hero-line text-white">Dharmavaram</span>
-      <span class="block hero-line"><span class="gradient-text">Sree Vishnu</span> <span class="hero-title-italic">Vardhan</span><span class="text-mint-400">.</span></span>
-    </h1>
+        <!-- Hello mark -->
+        <div class="font-mono text-xs sm:text-sm text-mint-400 mb-2 tracking-widest">// HELLO, WORLD —</div>
 
-    <!-- Tagline as subhead -->
-    <h2 class="hero-fade text-xl sm:text-2xl md:text-3xl text-gray-300 font-light mb-2 max-w-3xl tracking-tight">
-      AI Engineer building <span class="text-mint-400 font-medium">autonomous systems</span> for <span class="hero-title-italic text-cy-400">scientific discovery</span>.
-    </h2>
+        <!-- BIG NAME -->
+        <h1 class="hero-title text-[2.4rem] sm:text-5xl md:text-6xl lg:text-[3.5rem] xl:text-[4.5rem] mb-5 leading-[0.95]">
+          <span class="block hero-line text-white">Dharmavaram</span>
+          <span class="block hero-line"><span class="gradient-text">Sree Vishnu</span> <span class="hero-title-italic">Vardhan</span><span class="text-mint-400">.</span></span>
+        </h1>
 
-    <div class="grid lg:grid-cols-[1.3fr_1fr] gap-10 lg:gap-14 mt-12 lg:mt-16 items-start">
-      <!-- LEFT: description + meta + ctas + agent monitor -->
-      <div class="hero-fade">
-        <p class="text-gray-400 text-base sm:text-lg max-w-xl mb-6 leading-relaxed">
+        <!-- Tagline as subhead -->
+        <h2 class="text-lg sm:text-xl md:text-2xl text-gray-300 font-light mb-2 tracking-tight">
+          AI Engineer building <span class="text-mint-400 font-medium">autonomous systems</span> for <span class="hero-title-italic text-cy-400">scientific discovery</span>.
+        </h2>
+      </div>
+
+      <!-- RIGHT (spans 2 rows on desktop): Photo -->
+      <div class="hero-fade order-2 lg:row-span-2 flex justify-center lg:justify-end mt-6 lg:mt-0 lg:pt-2 mb-8 lg:mb-0">
+        <div class="relative group w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[340px]">
+          <div class="absolute -inset-3 bg-gradient-to-br from-mint-400/25 via-cy-400/15 to-vi-400/15 blur-3xl opacity-70 pointer-events-none"></div>
+          <div class="relative aspect-[3/4] rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-mint-400/15">
+            <div class="absolute inset-0 bg-gradient-to-t from-ink-900/60 via-transparent to-transparent z-10 pointer-events-none"></div>
+            <img src="./images/Image.jpg" alt="Dharmavaram Sree Vishnu Vardhan" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"/>
+          </div>
+          <!-- Mono tag -->
+          <div class="absolute -bottom-3 -right-2 sm:-right-3 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-ink-900/95 border border-mint-400/30 rounded-lg font-mono text-[9px] sm:text-[10px] text-mint-400 z-20 backdrop-blur-sm whitespace-nowrap">
+            // D.SREE_VISHNU_VARDHAN
+          </div>
+          <!-- Frame corners -->
+          <div class="absolute -top-2 -left-2 w-7 h-7 border-t-2 border-l-2 border-mint-400/40 rounded-tl-2xl z-20"></div>
+          <div class="absolute -top-2 -right-2 w-7 h-7 border-t-2 border-r-2 border-cy-400/40 rounded-tr-2xl z-20"></div>
+          <div class="absolute -bottom-2 -left-2 w-7 h-7 border-b-2 border-l-2 border-vi-400/40 rounded-bl-2xl z-20"></div>
+        </div>
+      </div>
+
+      <!-- BOTTOM-LEFT: Details (description, meta, CTAs, agent monitor) -->
+      <div class="hero-fade order-3 mt-2 lg:mt-6">
+        <p class="text-gray-400 text-sm sm:text-base lg:text-lg max-w-xl mb-5 sm:mb-6 leading-relaxed">
           Building production-grade <span class="text-mint-400">agentic AI systems</span>, <span class="text-cy-400">knowledge graphs</span>, and <span class="text-vi-400">multi-agent frameworks</span> for one of the world's leading life sciences enterprises.
         </p>
 
-        <div class="flex flex-wrap gap-x-6 gap-y-3 mb-8 font-mono text-xs text-gray-500">
-          <span class="flex items-center gap-2"><span class="text-mint-400">▸</span>Hyderabad, IN</span>
-          <span class="flex items-center gap-2"><span class="text-mint-400">▸</span>3+ yrs enterprise AI</span>
-          <span class="flex items-center gap-2"><span class="text-mint-400">▸</span>Patent holder</span>
-          <span class="flex items-center gap-2"><span class="text-mint-400">▸</span>Scopus published</span>
+        <div class="flex flex-wrap gap-x-5 gap-y-2 mb-7 font-mono text-[10px] sm:text-xs text-gray-500">
+          <span class="flex items-center gap-1.5"><span class="text-mint-400">▸</span>Hyderabad, IN</span>
+          <span class="flex items-center gap-1.5"><span class="text-mint-400">▸</span>3+ yrs enterprise AI</span>
+          <span class="flex items-center gap-1.5"><span class="text-mint-400">▸</span>Patent holder</span>
+          <span class="flex items-center gap-1.5"><span class="text-mint-400">▸</span>Scopus published</span>
         </div>
 
-        <div class="flex flex-wrap gap-4 mb-10">
-          <a href="#projects" class="hover-target btn-mag btn-primary px-7 py-3.5 rounded-xl font-semibold text-sm shadow-lg shadow-mint-400/25 hover:-translate-y-0.5 transition-transform">
+        <div class="flex flex-wrap gap-3 mb-8">
+          <a href="#projects" class="hover-target btn-mag btn-primary px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-sm shadow-lg shadow-mint-400/25 hover:-translate-y-0.5 transition-transform">
             View Projects →
           </a>
-          <a href="#contact" class="hover-target btn-mag px-7 py-3.5 rounded-xl border border-white/10 text-white text-sm font-semibold hover:border-mint-400/50 hover:bg-mint-400/5 transition-all">
+          <a href="#contact" class="hover-target btn-mag px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl border border-white/10 text-white text-sm font-semibold hover:border-mint-400/50 hover:bg-mint-400/5 transition-all">
             Get in Touch
           </a>
         </div>
 
-        <!-- Live agent monitor (compact) -->
-        <div class="card-glow p-5 max-w-md">
-          <div class="flex items-center justify-between mb-4">
-            <div class="flex items-center gap-2">
-              <div class="w-2 h-2 rounded-full bg-mint-400 animate-pulse"></div>
-              <span class="font-mono text-[10px] text-mint-400 tracking-widest">// AGENT_MONITOR.LIVE</span>
-            </div>
-            <span class="font-mono text-[10px] text-gray-600" id="liveTime">--:--:--</span>
-          </div>
-          <div class="space-y-2" id="agentList">
-            <div class="agent-row" data-agent="extractor">
-              <div class="agent-pulse"></div>
-              <div class="flex-1 min-w-0">
-                <div class="font-mono text-[12px] text-gray-300">Extractor Agent</div>
-                <div class="font-mono text-[10px] text-gray-600 agent-status">idle</div>
-              </div>
-              <span class="font-mono text-[10px] text-gray-600">v2.4</span>
-            </div>
-            <div class="agent-row" data-agent="validator">
-              <div class="agent-pulse"></div>
-              <div class="flex-1 min-w-0">
-                <div class="font-mono text-[12px] text-gray-300">Validator Agent</div>
-                <div class="font-mono text-[10px] text-gray-600 agent-status">idle</div>
-              </div>
-              <span class="font-mono text-[10px] text-gray-600">v1.8</span>
-            </div>
-            <div class="agent-row" data-agent="generator">
-              <div class="agent-pulse"></div>
-              <div class="flex-1 min-w-0">
-                <div class="font-mono text-[12px] text-gray-300">Generator Agent</div>
-                <div class="font-mono text-[10px] text-gray-600 agent-status">idle</div>
-              </div>
-              <span class="font-mono text-[10px] text-gray-600">v1.2</span>
-            </div>
-            <div class="agent-row" data-agent="creator">
-              <div class="agent-pulse"></div>
-              <div class="flex-1 min-w-0">
-                <div class="font-mono text-[12px] text-gray-300">Creator Agent</div>
-                <div class="font-mono text-[10px] text-gray-600 agent-status">idle</div>
-              </div>
-              <span class="font-mono text-[10px] text-gray-600">beta</span>
-            </div>
-            <div class="agent-row" data-agent="mapper">
-              <div class="agent-pulse"></div>
-              <div class="flex-1 min-w-0">
-                <div class="font-mono text-[12px] text-gray-300">Mapper Agent</div>
-                <div class="font-mono text-[10px] text-gray-600 agent-status">idle</div>
-              </div>
-              <span class="font-mono text-[10px] text-gray-600">beta</span>
-            </div>
-          </div>
-          <div class="flex items-center justify-between mt-4 pt-4 border-t border-white/5 font-mono text-[10px] text-gray-500">
-            <span>active: <span class="text-mint-400" id="activeCount">0</span>/5</span>
-            <span>uptime: 99.97%</span>
-            <span>region: ap-south-1</span>
-          </div>
-        </div>
       </div>
 
-      <!-- RIGHT: profile photo -->
-      <div class="hero-fade relative group w-full max-w-[340px] mx-auto lg:mx-0 lg:ml-auto lg:mt-4">
-        <div class="absolute -inset-4 bg-gradient-to-br from-mint-400/25 via-cy-400/15 to-vi-400/15 blur-3xl opacity-70 pointer-events-none"></div>
-        <div class="relative aspect-[3/4] rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-mint-400/15">
-          <div class="absolute inset-0 bg-gradient-to-t from-ink-900/60 via-transparent to-transparent z-10 pointer-events-none"></div>
-          <img src="./images/Image.jpg" alt="Dharmavaram Sree Vishnu Vardhan" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"/>
-        </div>
-        <!-- Floating mono tag -->
-        <div class="absolute -bottom-3 -right-3 px-3 py-1.5 bg-ink-900/95 border border-mint-400/30 rounded-lg font-mono text-[10px] text-mint-400 z-20 backdrop-blur-sm">
-          // D.SREE_VISHNU_VARDHAN
-        </div>
-        <!-- Floating frame corners -->
-        <div class="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-mint-400/40 rounded-tl-2xl z-20"></div>
-        <div class="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-cy-400/40 rounded-tr-2xl z-20"></div>
-        <div class="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-vi-400/40 rounded-bl-2xl z-20"></div>
-      </div>
     </div>
   </div>
 
@@ -843,27 +793,79 @@
 </section>
 
 <!-- ─────────────────── PROFILE STRIP ─────────────────── -->
-<section class="relative py-16 border-y border-white/5 bg-ink-900/40 backdrop-blur-sm">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="bento-card rounded-xl p-5">
-        <div class="font-display text-3xl font-bold text-mint-400 mb-1" data-counter="65">~65%</div>
-        <div class="text-xs text-gray-500 leading-snug">Productivity gain delivered</div>
+<section class="relative py-10 border-y border-white/5 bg-ink-900/40 backdrop-blur-sm">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6">
+    <div class="grid md:grid-cols-[1fr_1fr] lg:grid-cols-[1.1fr_0.9fr] gap-6 items-stretch">
+
+      <!-- LEFT: Agent Monitor -->
+      <div class="card-glow p-4 sm:p-5 h-full">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 rounded-full bg-mint-400 animate-pulse"></div>
+            <span class="font-mono text-[10px] text-mint-400 tracking-widest">// AGENT_MONITOR.LIVE</span>
+          </div>
+          <span class="font-mono text-[10px] text-gray-600" id="liveTime">--:--:--</span>
+        </div>
+        <div class="space-y-2" id="agentList">
+          <div class="agent-row" data-agent="extractor">
+            <div class="agent-pulse"></div>
+            <div class="flex-1 min-w-0"><div class="font-mono text-[12px] text-gray-300">Extractor Agent</div><div class="font-mono text-[10px] text-gray-600 agent-status">idle</div></div>
+            <span class="font-mono text-[10px] text-gray-600">v2.4</span>
+          </div>
+          <div class="agent-row" data-agent="validator">
+            <div class="agent-pulse"></div>
+            <div class="flex-1 min-w-0"><div class="font-mono text-[12px] text-gray-300">Validator Agent</div><div class="font-mono text-[10px] text-gray-600 agent-status">idle</div></div>
+            <span class="font-mono text-[10px] text-gray-600">v1.8</span>
+          </div>
+          <div class="agent-row" data-agent="generator">
+            <div class="agent-pulse"></div>
+            <div class="flex-1 min-w-0"><div class="font-mono text-[12px] text-gray-300">Generator Agent</div><div class="font-mono text-[10px] text-gray-600 agent-status">idle</div></div>
+            <span class="font-mono text-[10px] text-gray-600">v1.2</span>
+          </div>
+          <div class="agent-row" data-agent="creator">
+            <div class="agent-pulse"></div>
+            <div class="flex-1 min-w-0"><div class="font-mono text-[12px] text-gray-300">Creator Agent</div><div class="font-mono text-[10px] text-gray-600 agent-status">idle</div></div>
+            <span class="font-mono text-[10px] text-gray-600">beta</span>
+          </div>
+          <div class="agent-row" data-agent="mapper">
+            <div class="agent-pulse"></div>
+            <div class="flex-1 min-w-0"><div class="font-mono text-[12px] text-gray-300">Mapper Agent</div><div class="font-mono text-[10px] text-gray-600 agent-status">idle</div></div>
+            <span class="font-mono text-[10px] text-gray-600">beta</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-between mt-3 pt-3 border-t border-white/5 font-mono text-[10px] text-gray-500 gap-2">
+          <span>active: <span class="text-mint-400" id="activeCount">0</span>/5</span>
+          <span>99.97% up</span>
+          <span>ap-south-1</span>
+        </div>
       </div>
-      <div class="bento-card rounded-xl p-5">
-        <div class="font-display text-3xl font-bold text-cy-400 mb-1">5+</div>
-        <div class="text-xs text-gray-500 leading-snug">Enterprise apps shipped</div>
+
+      <!-- RIGHT: Vertical metrics + paragraph -->
+      <div class="flex flex-col gap-3">
+        <!-- Metrics — 2×2 grid on mobile, vertical on larger -->
+        <div class="grid grid-cols-2 gap-3 lg:grid-cols-1">
+          <div class="bento-card rounded-xl px-4 py-3 flex items-center gap-4">
+            <div class="font-display text-2xl font-bold text-mint-400 flex-shrink-0" data-counter="65">~65%</div>
+            <div class="text-xs text-gray-500 leading-snug">Productivity gain delivered</div>
+          </div>
+          <div class="bento-card rounded-xl px-4 py-3 flex items-center gap-4">
+            <div class="font-display text-2xl font-bold text-cy-400 flex-shrink-0">5+</div>
+            <div class="text-xs text-gray-500 leading-snug">Enterprise apps shipped</div>
+          </div>
+          <div class="bento-card rounded-xl px-4 py-3 flex items-center gap-4">
+            <div class="font-display text-2xl font-bold text-vi-400 flex-shrink-0">2×</div>
+            <div class="text-xs text-gray-500 leading-snug">Scopus publications</div>
+          </div>
+          <div class="bento-card rounded-xl px-4 py-3 flex items-center gap-4">
+            <div class="font-display text-2xl font-bold text-mint-400 flex-shrink-0">3+</div>
+            <div class="text-xs text-gray-500 leading-snug">Years in enterprise AI</div>
+          </div>
+        </div>
+        <!-- Paragraph pulled up into the gap -->
+        <p class="text-gray-400 text-sm leading-relaxed">Senior AI Engineer designing and building production-grade agentic AI systems for life sciences. Bridging knowledge graphs, GenAI, and consulting to ship what actually works at enterprise scale.</p>
       </div>
-      <div class="bento-card rounded-xl p-5">
-        <div class="font-display text-3xl font-bold text-vi-400 mb-1">2×</div>
-        <div class="text-xs text-gray-500 leading-snug">Scopus publications</div>
-      </div>
-      <div class="bento-card rounded-xl p-5">
-        <div class="font-display text-3xl font-bold text-mint-400 mb-1">3+</div>
-        <div class="text-xs text-gray-500 leading-snug">Years in enterprise AI</div>
-      </div>
+
     </div>
-    <p class="mt-6 text-gray-400 text-base leading-relaxed max-w-3xl">Senior AI Engineer designing and building production-grade agentic AI systems for life sciences. Bridging knowledge graphs, GenAI, and consulting to ship what actually works at enterprise scale.</p>
   </div>
 </section>
 
